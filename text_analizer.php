@@ -10,10 +10,11 @@
         $frecuencias = $miTextAnalizer->getAnalizedText();
         $totalPalabras = count($frecuencias);
         $maxFreq = 0;
-        foreach($frecuencias as $freq) {
+        /*foreach($frecuencias as $freq) {
             $maxFreq = $freq;
             break;
-        }
+        }*/
+        $maxFreq = reset($frecuencias);
         //$maxFreq =$frecuencias; //max(0, $frecuencias);
         foreach($frecuencias as $palabra => $frecuencia) {
             $htmlFinal .= "<div style=\"font-size:".(($frecuencia + $maxFreq)/$maxFreq)."rem;\">".$palabra."( ".$frecuencia.")</div>";
