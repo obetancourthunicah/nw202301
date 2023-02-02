@@ -23,7 +23,7 @@ class ReplaceCRHandler extends CRHandler {
     public function handle($account){
         $transformed = str_replace($this->letter, $this->number, $account);
         if($this->nextHandler){
-            $this->nextHandler->handle($transformed);
+            return $this->nextHandler->handle($transformed);
         } else {
             return $transformed;
         }
@@ -34,17 +34,17 @@ class CleanCRHandler extends CRHandler{
         $transformed = str_replace([" ", "-"], "", $account);
         $transformed = strtolower($transformed);
         if($this->nextHandler){
-            $this->nextHandler->handle($transformed);
+            return $this->nextHandler->handle($transformed);
         } else {
             return $transformed;
         }
     }
 }
-class InvertCRHandler extends CRHandler{
+class ReverseCRHandler extends CRHandler{
     public function handle($account){
         $transformed = strrev($account);
         if($this->nextHandler){
-            $this->nextHandler->handle($transformed);
+            return $this->nextHandler->handle($transformed);
         } else {
             return $transformed;
         }
