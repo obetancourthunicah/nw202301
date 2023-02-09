@@ -1,6 +1,6 @@
 <?php
 require_once 'IRecursoBibliografico.php';
-class BaseRecursoBibliográfico implements IRecursoBibliografico {
+class BaseRecursoBibliografico implements IRecursoBibliografico {
     protected string $title;
     protected string $author;
     protected string $dewey;

@@ -14,7 +14,7 @@
         public static function getRecurso(string $tipo, Array $params): IRecursoBibliografico  {
             switch($tipo){
                 case 'RecursoLibro':
-                    if(RecursoLibro::validateEntry($params)){
+                    if(!RecursoLibro::validateEntry($params)){
                         return new RecursoLibro(
                             $params["title"],
                             $params["author"],
@@ -25,9 +25,8 @@
                     } else {
                         throw new Exception("Bad Input Request");
                     }
-                    break;
                 case 'RecursoAudio':
-                    if(RecursoAudio::validateEntry($params)){
+                    if(!RecursoAudio::validateEntry($params)){
                         return new RecursoAudio(
                             $params["title"],
                             $params["author"],
@@ -38,7 +37,6 @@
                     } else {
                         throw new Exception("Bad Input Request");
                     }
-                    break;
                 default:
                     throw new Exception("Tipo no Soportado");
             }

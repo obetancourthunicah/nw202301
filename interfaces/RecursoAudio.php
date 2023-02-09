@@ -1,9 +1,9 @@
 <?php
 require_once 'IRecursoBibliografico.php';
-require_once 'BaseRecursoBibliográfico.php';
+require_once 'BaseRecursoBibliografico.php';
 
 class RecursoAudio
-    extends BaseRecursoBibliográfico
+    extends BaseRecursoBibliografico
     implements IRecursoBibliografico {
     protected string $disco;
     public function __construct(
@@ -27,7 +27,7 @@ class RecursoAudio
     {
         $normalArray = parent::getNormalArray();
         $normalArray["disco"] = $this->disco;
-        return $normalArray();
+        return $normalArray;
     }
     public function getNormalJSONString()
     {
