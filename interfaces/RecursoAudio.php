@@ -2,16 +2,16 @@
 require_once 'IRecursoBibliografico.php';
 require_once 'BaseRecursoBibliográfico.php';
 
-class RecursoLibro
+class RecursoAudio
     extends BaseRecursoBibliográfico
     implements IRecursoBibliografico {
-    protected string $editorial;
+    protected string $disco;
     public function __construct(
         string $name,
         string $author,
         string $dewey,
         string $barcod,
-        string $editorial
+        string $disco
     )
     {
         parent::__construct(
@@ -19,14 +19,14 @@ class RecursoLibro
             $author,
             $dewey,
             $barcod,
-            "book"
+            "audio"
         );
-        $this->editorial = $editorial;
+        $this->disco = $disco;
     }
     public function getNormalArray()
     {
         $normalArray = parent::getNormalArray();
-        $normalArray["editorial"] = $this->editorial;
+        $normalArray["disco"] = $this->disco;
         return $normalArray();
     }
     public function getNormalJSONString()
@@ -36,19 +36,19 @@ class RecursoLibro
     public function getMarcArray()
     {
         $arrMarc = parent::getMarcArray();
-        $arrMarc["f.a0.6"] = $this->editorial;
+        $arrMarc["t.d0.1"] = $this->disco;
         return $arrMarc;
     }
     public function getMarcString()
     {
         $strMarc = parent::getMarcString();
-        $strMarc .= sprintf("%s:%s|","f.a0.6", $this->editorial);
+        $strMarc .= sprintf("%s:%s|","t.d0.1", $this->disco);
         return $strMarc;
     }
     public static function validateEntry(array $entry)
     {
         $errors = parent::validateEntry($entry);
-        if(!key_exists("editorial", $entry)) $errors = true;
+        if(!key_exists("disco", $entry)) $errors = true;
         return $errors;
     }
 }

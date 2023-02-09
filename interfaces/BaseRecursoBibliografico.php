@@ -56,6 +56,14 @@ class BaseRecursoBibliográfico implements IRecursoBibliografico {
         }
         return $strMarc;
     }
+    public static function validateEntry(array $entry){
+        $errors = false;
+        if(!key_exists("title", $entry)) $errors = true;
+        if(!key_exists("author", $entry)) $errors = true;
+        if(!key_exists("dewey", $entry)) $errors = true;
+        if(!key_exists("barcod", $entry)) $errors = true;
+        return $errors;
+    }
 }
 
 ?>
